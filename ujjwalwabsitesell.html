@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ujjwal Web Solutions</title>
+
+<style>
+
+/* ===== THEME COLORS ===== */
+:root {
+    --bg: #f8fafc;
+    --text: #1e293b;
+    --card: white;
+    --primary: #2563eb;
+}
+
+.dark {
+    --bg: #0f172a;
+    --text: white;
+    --card: #1e293b;
+}
+
+/* ===== GLOBAL ===== */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: 0.4s;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* ===== NAVBAR ===== */
+nav {
+    background: var(--primary);
+    color: white;
+    padding: 15px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* ===== HERO ===== */
+.hero {
+    padding: 100px 0;
+    text-align: center;
+}
+
+/* ===== CARD ===== */
+.card {
+    background: var(--card);
+    padding: 25px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* ===== BUTTON ===== */
+.btn {
+    background: var(--primary);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+/* ===== ANIMATION ===== */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 0.8s;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== ADMIN PANEL ===== */
+.admin {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background: var(--card);
+    padding: 15px;
+    border-radius: 10px;
+    width: 250px;
+}
+
+.admin input {
+    width: 100%;
+    margin: 5px 0;
+    padding: 8px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+<div class="container navbar">
+<h2 id="siteTitle">Ujjwal Web Solutions</h2>
+<button class="btn" onclick="toggleDark()">Dark Mode</button>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero fade-in">
+<div class="container">
+<h1 id="heroTitle">Professional Website Development</h1>
+<p id="heroText">Modern, Secure & Affordable Websites</p>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section class="fade-in">
+<div class="container">
+<div class="card">
+<h3>Business Website</h3>
+<p>Professional website for companies.</p>
+</div>
+
+<div class="card">
+<h3>Portfolio Website</h3>
+<p>Personal brand and projects.</p>
+</div>
+</div>
+</section>
+
+<!-- ADMIN PANEL -->
+<div class="admin">
+<h3>Admin Panel</h3>
+<input id="titleInput" placeholder="Change Title">
+<input id="textInput" placeholder="Change Text">
+<button class="btn" onclick="updateContent()">Update</button>
+</div>
+
+<script>
+
+/* ===== DARK MODE ===== */
+function toggleDark() {
+    document.body.classList.toggle("dark");
+}
+
+/* ===== ADMIN UPDATE ===== */
+function updateContent() {
+    let title = document.getElementById("titleInput").value;
+    let text = document.getElementById("textInput").value;
+
+    if(title) document.getElementById("heroTitle").innerText = title;
+    if(text) document.getElementById("heroText").innerText = text;
+}
+
+/* ===== SCROLL ANIMATION ===== */
+const elements = document.querySelectorAll(".fade-in");
+
+window.addEventListener("scroll", () => {
+    elements.forEach(el => {
+        const pos = el.getBoundingClientRect().top;
+        if(pos < window.innerHeight - 100) {
+            el.classList.add("show");
+        }
+    });
+});
+
+</script>
+
+</body>
+</html>
